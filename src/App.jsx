@@ -8,7 +8,6 @@ import {
   signOut
 } from 'firebase/auth';
 
-// Config de Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyBs0hW5qNPW8MCN9tbhYSuWSaU0_XZjO7c",
   authDomain: "aurora-70383.firebaseapp.com",
@@ -36,16 +35,16 @@ export default function App() {
   const handleLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, pass);
-    } catch (err) {
-      alert("Error al iniciar sesión: " + err.message);
+    } catch (e) {
+      alert('Error al iniciar sesión: ' + e.message);
     }
   };
 
   const handleRegister = async () => {
     try {
       await createUserWithEmailAndPassword(auth, email, pass);
-    } catch (err) {
-      alert("Error al registrarse: " + err.message);
+    } catch (e) {
+      alert('Error al registrarse: ' + e.message);
     }
   };
 
@@ -77,14 +76,14 @@ export default function App() {
           type="email"
           placeholder="Email"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           className="border p-1"
         />
         <input
           type="password"
           placeholder="Contraseña"
           value={pass}
-          onChange={e => setPass(e.target.value)}
+          onChange={(e) => setPass(e.target.value)}
           className="border p-1"
         />
         <button onClick={handleLogin} className="bg-blue-500 text-white p-2">Login</button>
