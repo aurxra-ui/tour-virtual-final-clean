@@ -10,10 +10,13 @@ import {
 } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: 'YOUR_API_KEY',
-  authDomain: 'YOUR_AUTH_DOMAIN',
-  projectId: 'YOUR_PROJECT_ID',
-  appId: 'YOUR_APP_ID'
+  apiKey: "AIzaSyBs0hW5qNPW8MCN9tbhYSuWSaU0_XZjO7c",
+  authDomain: "aurora-70383.firebaseapp.com",
+  projectId: "aurora-70383",
+  storageBucket: "aurora-70383.firebasestorage.app",
+  messagingSenderId: "511930677766",
+  appId: "1:511930677766:web:bdb1cf52c427b3c9b16187",
+  measurementId: "G-442QW1BQKG"
 };
 
 const app = initializeApp(firebaseConfig);
