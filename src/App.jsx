@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import {
@@ -24,6 +23,8 @@ const auth = getAuth(app);
 
 export default function App() {
   const [user, setUser] = useState(null);
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState('');
 
@@ -31,12 +32,20 @@ export default function App() {
     onAuthStateChanged(auth, setUser);
   }, []);
 
-  const handleLogin = async (email, pass) => {
-    await signInWithEmailAndPassword(auth, email, pass);
+  const handleLogin = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, email, pass);
+    } catch (error) {
+      alert("Error al iniciar sesión: " + error.message);
+    }
   };
 
-  const handleRegister = async (email, pass) => {
-    await createUserWithEmailAndPassword(auth, email, pass);
+  const handleRegister = async () => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, pass);
+    } catch (error) {
+      alert("Error al registrarse: " + error.message);
+    }
   };
 
   const handleLogout = async () => {
@@ -63,10 +72,22 @@ export default function App() {
     return (
       <div className="p-4 space-y-4">
         <h1 className="text-xl font-bold">Login o Registro</h1>
-        <input type="email" placeholder="Email" id="email" className="border p-1" />
-        <input type="password" placeholder="Contraseña" id="pass" className="border p-1" />
-        <button onClick={() => handleLogin(email.value, pass.value)} className="bg-blue-500 text-white p-2">Login</button>
-        <button onClick={() => handleRegister(email.value, pass.value)} className="bg-green-500 text-white p-2">Registrarse</button>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="border p-1"
+        />
+        <input
+          type="password"
+          placeholder="Contraseña"
+          value={pass}
+          onChange={(e) => setPass(e.target.value)}
+          className="border p-1"
+        />
+        <button onClick={handleLogin} className="bg-blue-500 text-white p-2">Login</button>
+        <button onClick={handleRegister} className="bg-green-500 text-white p-2">Registrarse</button>
       </div>
     );
   }
