@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+// Componente principal
 export default function App() {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState('');
@@ -22,9 +23,9 @@ export default function App() {
 
   return (
     <div className="p-4 space-y-4">
-      <h1 className="text-xl font-bold">Cargar imagen 360°</h1>
+      <h1 className="text-xl font-bold">Subí tu imagen 360°</h1>
       <input type="file" onChange={e => setImage(e.target.files[0])} />
-      <button onClick={handleUpload} className="bg-blue-600 text-white p-2">Subir imagen 360°</button>
+      <button onClick={handleUpload} className="bg-blue-600 text-white p-2">Subir imagen</button>
       {url && (
         <div>
           <h2 className="text-lg font-semibold">Vista 360°</h2>
